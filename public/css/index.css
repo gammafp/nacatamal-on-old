@@ -1,0 +1,21 @@
+* {
+    margin: 0px;
+  }
+  body {
+    background-color: #2d3436;
+    display: flex;
+    justify-content: center;
+  }
+  #canvas {
+    /* width: 400px;
+    height: 300px; */
+    margin: 50px auto;
+    background-color: orange;
+    display: inline-block;
+  }
+  .ui_container {
+    display: inline-block;
+    margin-right: 200px;
+    color: orange;
+    margin-top: 50px;
+  }

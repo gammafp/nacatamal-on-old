@@ -1,0 +1,8 @@
+{
+    "exclude": [],
+    "compilerOptions": {
+        "target": "esnext",
+        "moduleResolution": "node",
+        "allowSyntheticDefaultImports": true
+    }
+}

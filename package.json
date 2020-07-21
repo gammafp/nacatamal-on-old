@@ -1,0 +1,30 @@
+{
+  "name": "nacatamal-on-template",
+  "version": "0.0.1",
+  "description": "A simple template for create frameworks o library with TypeScript",
+  "main": "main.js",
+  "scripts": {
+    "dev": "webpack-dev-server --mode development --open",
+    "build": "esbuild --bundle src/main.ts --outfile=public/bundle.js --minify",
+    "dev-build": "esbuild --bundle src/main.ts --outfile=public/bundle.js --sourcemap"
+  },
+  "keywords": [
+    "template",
+    "typescript",
+    "esbuild",
+    "webpack",
+    "html5 games"
+  ],
+  "author": "Franciso José Pereira Alvarado",
+  "license": "MIT",
+  "devDependencies": {
+    "html-webpack-plugin": "^4.3.0",
+    "esbuild": "^0.6.5",
+    "ts-loader": "^8.0.1",
+    "tslint": "^6.1.2",
+    "typescript": "^3.9.7",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0"
+  }
+}
