@@ -1,5 +1,5 @@
 import * as Render from './render/webgl2';
-import Colors from './Colors';
+import Colors from './colors';
 
 export {
     Render,

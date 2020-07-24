@@ -4,6 +4,8 @@ import triangle from '../nacatamal-on/render/shapes/triangle';
 import { fragmentShaderSource, vertexShaderSource, vertexShaderSource2D } from '../nacatamal-on/render/shaders/shaders';
 import { createProgram, createWebGlContext, getAttribLocation } from '../nacatamal-on/render/webgl2';
 import draw from '../nacatamal-on/render/webgl2/draw';
+import { Matrix3 } from '../nacatamal-on/math/matrix3/Matrix3';
+import Color from '../nacatamal-on/colors';
 
 declare var webglLessonsUI: any;
 
@@ -15,8 +17,8 @@ let scale = [1, 1];
 // Gl Está en contexto global
 const gl = createWebGlContext({
     parent: 'canvas',
-    width: 300,
-    height: 300
+    width: 600,
+    height: 600
 });
 
 const program = createProgram(gl, vertexShaderSource2D, fragmentShaderSource);
@@ -28,6 +30,17 @@ const position_attrib = getAttribLocation(gl, program, 'a_position');
 const u_resolution = gl.getUniformLocation(program, "u_resolution");
 gl.uniform2f(u_resolution, gl.canvas.width, gl.canvas.height);
 
+const color = new Color('orangered').getArrayNormalizeColor();
+console.log('color: ', color)
+
+const u_color = gl.getUniformLocation(program, "u_color");
+gl.uniform3fv(u_color, color);
+
+
+let matrix = new Matrix3();
+const u_matrix = gl.getUniformLocation(program, "u_matrix");
+gl.uniformMatrix3fv(u_matrix, false, matrix.toArray());
+
 // Buffer position
 const position_buffer = gl.createBuffer();
 gl.bindBuffer(gl.ARRAY_BUFFER, position_buffer);
@@ -37,11 +50,11 @@ const drawScene = () => {
         // Proyección
         // Se inicia la proyección con el tamaño del canvas
         // let matrix = m3.projection(gl.canvas.clientWidth, gl.canvas.clientHeight);
-        // matrix = m3.translate(matrix, translation[0], translation[1]);
-        // matrix = m3.rotate(matrix, angleInRadians);
-        // matrix = m3.scale(matrix, scale[0], scale[1]);
+        matrix = matrix.translate(translation[0], translation[1]);
+        matrix = matrix.rotate(angleInRadians);
+        matrix = matrix.scale(scale[0], scale[1]);
 
-
+        gl.uniformMatrix3fv(u_matrix, false, matrix.toArray());
         gl.vertexAttribPointer(position_attrib, 2, gl.FLOAT, gl.false, 0, 0);
 
         const triangle_shape = triangle(gl);
