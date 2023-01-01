@@ -18,13 +18,13 @@
   "author": "Franciso José Pereira Alvarado",
   "license": "MIT",
   "devDependencies": {
-    "html-webpack-plugin": "^4.3.0",
+    "html-webpack-plugin": "^5.5.0",
     "esbuild": "^0.6.5",
-    "ts-loader": "^8.0.1",
+    "ts-loader": "^8.4.0",
     "tslint": "^6.1.2",
     "typescript": "^3.9.7",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.12",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^3.11.0"
   }
 }
